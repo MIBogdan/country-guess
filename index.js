@@ -1,6 +1,6 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mysql = require('mysql');
+const express = require("express");
+const bodyParser = require("body-parser");
+const mysql = require("mysql2");
 
 const app = express();
 const port = 3000;
@@ -16,13 +16,11 @@ const db = mysql.createConnection({
   host: "localhost",
   database: "world",
   password: "",
-  charset: 'utf8mb4',
-  port: 3306
+  charset: "utf8mb4",
+  port: 3306,
 });
 
 db.connect();
-
-
 
 db.query("SELECT * FROM flags", (err, result) => {
   if (err) {
@@ -33,7 +31,6 @@ db.query("SELECT * FROM flags", (err, result) => {
 
   db.end();
 });
-
 
 let totalCorrect = 0;
 
